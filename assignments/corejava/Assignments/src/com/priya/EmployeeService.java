@@ -2,6 +2,10 @@ package com.priya;
 
 
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class EmployeeService {
@@ -31,6 +35,42 @@ public class EmployeeService {
 		}*/
 		
 		
+		
+	}
+	public void import1() {
+		
+		BufferedReader reader;
+		try {
+			reader = new BufferedReader(new FileReader(
+					"C:\\training\\ibm-fsd-backend\\assignments\\corejava\\Emplist.txt"));
+			String line = reader.readLine();
+			while (line != null) {
+				String []tokens = line.split(",");
+				Employee emp = new Employee(Integer.parseInt(tokens[0]),tokens[1],tokens[2],tokens[3]);
+				employeeList.add(emp);
+				line = reader.readLine();
+			}
+			reader.close();
+			System.out.println("File imported successfully.");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+public void export1() {
+		 try{    
+	           FileWriter fw=new FileWriter("C:\\training\\ibm-fsd-backend\\assignments\\corejava\\Emplist.txt");  
+	           for(Employee e : employeeList)
+	           {
+	        	   fw.write("Id: "+e.getId()+" Name: "+e.getName()+" Designation: "+e.getDes()+" Salary: "+e.getSal()+"\n"); 
+	        	   
+	           }
+	              
+	           fw.close();    
+	          }
+		 catch(Exception e){System.out.println(e);}    
+	          System.out.println("File exported succesfully");    
 		
 	}
 
