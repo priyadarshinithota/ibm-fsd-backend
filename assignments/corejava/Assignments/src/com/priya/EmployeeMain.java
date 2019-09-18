@@ -7,7 +7,7 @@ public class EmployeeMain {
 		EmployeeService emp = new EmployeeService();
 		while(true)
 		{
-			System.out.println("1.Add Employee\n2.View employees\n3.Update employee\n4.View employee\n5.Delete employee\n6.Exit");
+			System.out.println("1.Add Employee\n2.View employees\n3.Update employee\n4.View employee\n5.Delete employee\n6.import1\n7.Export1\n8.exit");
 			System.out.println("Enter your choice:");
 			Scanner sc = new java.util.Scanner(System.in);
 			int choice = sc .nextInt();
@@ -24,7 +24,11 @@ public class EmployeeMain {
 				break;
 			case 5: emp.delete();
 				break;
-			case 6: System.exit(0);
+			case 6: emp.import1();
+			    break;
+			case 7: emp.export1();
+			    break;
+			case 8: System.exit(0);
 				break;
 			default: System.out.println("Invalid choice.");
 						break;
